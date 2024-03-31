@@ -488,7 +488,7 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		Type: C.TypeSelector,
 		Tag:  OutboundSelectTag,
 		SelectorOptions: option.SelectorOutboundOptions{
-			Outbounds: append([]string{urlTest.Tag}, tags...),
+			Outbounds: append([]string{urlTest.Tag}, unfilteredTags...),
 			Default:   urlTest.Tag,
 		},
 	}
