@@ -22,7 +22,7 @@ func SetCoreStatus(state pb.CoreState, msgType pb.MessageType, message string) p
 
 }
 
-func (s *server) CoreInfoListener(stream pb.Hiddify_CoreInfoListenerServer) error {
+func (s *server) CoreInfoListener(stream pb.BarVPN_CoreInfoListenerServer) error {
 	coreSub, _, _ := coreInfoObserver.Subscribe()
 	defer coreInfoObserver.UnSubscribe(coreSub)
 	stopch := make(chan int)

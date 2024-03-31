@@ -358,7 +358,7 @@ func MakeConfig(Ipv6 bool, ServerPort int, StrictRoute bool, EndpointIndependent
 		  {
 			"type": "tun",
 			"tag": "tun-in",
-			"interface_name": "HiddifyTunnel",
+			"interface_name": "BarVPNTunnel",
 			"inet4_address": "172.19.0.1/30",
 			` + ipv6 + `
 			"mtu": 9000,

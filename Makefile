@@ -2,7 +2,7 @@ PRODUCT_NAME=libcore
 BASENAME=$(PRODUCT_NAME)
 BINDIR=bin
 LIBNAME=$(PRODUCT_NAME)
-CLINAME=HiddifyCli
+CLINAME=BarVPNCli
 
 BRANCH=$(shell git branch --show-current)
 VERSION=$(shell git describe --tags || echo "unknown version")

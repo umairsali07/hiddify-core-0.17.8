@@ -189,7 +189,7 @@ message LogMessage {
 message StopRequest{
 }
 
-service Hiddify {
+service BarVPN {
   rpc SayHello (HelloRequest) returns (HelloResponse);
   rpc SayHelloStream (stream HelloRequest) returns (stream HelloResponse);
   rpc Start (StartRequest) returns (CoreInfoResponse);

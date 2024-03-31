@@ -27,6 +27,7 @@ const (
 	OutboundBlockTag          = "block"
 	OutboundSelectTag         = "select"
 	OutboundURLTestTag        = "auto"
+	OutboundCDNTag            = "CDN"
 	OutboundDNSTag            = "dns-out"
 	OutboundDirectFragmentTag = "direct-fragment"
 
@@ -207,7 +208,7 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 					Listen:     option.NewListenAddress(netip.MustParseAddr(bind)),
 					ListenPort: opt.LocalDnsPort,
 				},
-				OverrideAddress: "1.1.1.1",
+				OverrideAddress: "8.8.8.8",
 				OverridePort:    53,
 			},
 		},
@@ -250,6 +251,13 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 			DefaultOptions: option.DefaultRule{
 				ClashMode: "Global",
 				Outbound:  OutboundMainProxyTag,
+			},
+		},
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				DomainSuffix: []string{"cdn-port.com"},
+				Outbound:     OutboundCDNTag,
 			},
 		},
 	}
@@ -400,7 +408,7 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		if err != nil {
 			return nil, fmt.Errorf("failed to generate warp config: %v", err)
 		}
-		out.Tag = "Hiddify Warp ✅"
+		out.Tag = "BarVPN Warp ✅"
 		if opt.Warp.Mode == "warp_over_proxy" {
 			out.WireGuardOptions.Detour = OutboundURLTestTag
 			OutboundMainProxyTag = out.Tag
@@ -433,8 +441,24 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 			if !strings.Contains(out.Tag, "§hide§") {
 				tags = append(tags, out.Tag)
 			}
-			out = patchHiddifyWarpFromConfig(out, opt)
+			out = patchBarVPNWarpFromConfig(out, opt)
 			outbounds = append(outbounds, out)
+		}
+	}
+
+	// Filter tags that contain "§CDN§"
+	filteredTags := make([]string, 0)
+	for _, tag := range tags {
+		if strings.HasPrefix(tag, "CDN-") {
+			filteredTags = append(filteredTags, tag)
+		}
+	}
+
+	// Filter out tags that contain "§CDN§"
+	unfilteredTags := make([]string, 0)
+	for _, tag := range tags {
+		if !strings.HasPrefix(tag, "CDN-") {
+			unfilteredTags = append(unfilteredTags, tag)
 		}
 	}
 
@@ -442,7 +466,18 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		Type: C.TypeURLTest,
 		Tag:  OutboundURLTestTag,
 		URLTestOptions: option.URLTestOutboundOptions{
-			Outbounds:   tags,
+			Outbounds:   unfilteredTags,
+			URL:         opt.ConnectionTestUrl,
+			Interval:    option.Duration(opt.URLTestInterval.Duration()),
+			IdleTimeout: option.Duration(opt.URLTestIdleTimeout.Duration()),
+		},
+	}
+
+	cdn := option.Outbound{
+		Type: C.TypeURLTest,
+		Tag:  OutboundCDNTag,
+		URLTestOptions: option.URLTestOutboundOptions{
+			Outbounds:   filteredTags,
 			URL:         opt.ConnectionTestUrl,
 			Interval:    option.Duration(opt.URLTestInterval.Duration()),
 			IdleTimeout: option.Duration(opt.URLTestIdleTimeout.Duration()),
@@ -458,7 +493,7 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		},
 	}
 
-	outbounds = append([]option.Outbound{selector, urlTest}, outbounds...)
+	outbounds = append([]option.Outbound{selector, cdn, urlTest}, outbounds...)
 
 	options.Outbounds = append(
 		outbounds,
@@ -531,52 +566,52 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 	return &options, nil
 }
 
-func patchHiddifyWarpFromConfig(out option.Outbound, opt ConfigOptions) option.Outbound {
+func patchBarVPNWarpFromConfig(out option.Outbound, opt ConfigOptions) option.Outbound {
 	if opt.Warp.EnableWarp && opt.Warp.Mode == "proxy_over_warp" {
 		if out.DirectOptions.Detour == "" {
-			out.DirectOptions.Detour = "Hiddify Warp ✅"
+			out.DirectOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.HTTPOptions.Detour == "" {
-			out.HTTPOptions.Detour = "Hiddify Warp ✅"
+			out.HTTPOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.Hysteria2Options.Detour == "" {
-			out.Hysteria2Options.Detour = "Hiddify Warp ✅"
+			out.Hysteria2Options.Detour = "BarVPN Warp ✅"
 		}
 		if out.HysteriaOptions.Detour == "" {
-			out.HysteriaOptions.Detour = "Hiddify Warp ✅"
+			out.HysteriaOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.SSHOptions.Detour == "" {
-			out.SSHOptions.Detour = "Hiddify Warp ✅"
+			out.SSHOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.ShadowTLSOptions.Detour == "" {
-			out.ShadowTLSOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowTLSOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.ShadowsocksOptions.Detour == "" {
-			out.ShadowsocksOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.ShadowsocksROptions.Detour == "" {
-			out.ShadowsocksROptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksROptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.SocksOptions.Detour == "" {
-			out.SocksOptions.Detour = "Hiddify Warp ✅"
+			out.SocksOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.TUICOptions.Detour == "" {
-			out.TUICOptions.Detour = "Hiddify Warp ✅"
+			out.TUICOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.TorOptions.Detour == "" {
-			out.TorOptions.Detour = "Hiddify Warp ✅"
+			out.TorOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.TrojanOptions.Detour == "" {
-			out.TrojanOptions.Detour = "Hiddify Warp ✅"
+			out.TrojanOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.VLESSOptions.Detour == "" {
-			out.VLESSOptions.Detour = "Hiddify Warp ✅"
+			out.VLESSOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.VMessOptions.Detour == "" {
-			out.VMessOptions.Detour = "Hiddify Warp ✅"
+			out.VMessOptions.Detour = "BarVPN Warp ✅"
 		}
 		if out.WireGuardOptions.Detour == "" {
-			out.WireGuardOptions.Detour = "Hiddify Warp ✅"
+			out.WireGuardOptions.Detour = "BarVPN Warp ✅"
 		}
 	}
 	return out

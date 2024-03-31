@@ -18,7 +18,7 @@ func Log(level pb.LogLevel, typ pb.LogType, message string) {
 
 }
 
-func (s *server) LogListener(stream pb.Hiddify_LogListenerServer) error {
+func (s *server) LogListener(stream pb.BarVPN_LogListenerServer) error {
 	logSub, _, _ := logObserver.Subscribe()
 	defer logObserver.UnSubscribe(logSub)
 

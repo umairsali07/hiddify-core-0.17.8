@@ -87,9 +87,9 @@ type WarpOptions struct {
 func DefaultConfigOptions() *ConfigOptions {
 	return &ConfigOptions{
 		DNSOptions: DNSOptions{
-			RemoteDnsAddress:        "1.1.1.1",
+			RemoteDnsAddress:        "8.8.8.8",
 			RemoteDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),
-			DirectDnsAddress:        "1.1.1.1",
+			DirectDnsAddress:        "8.8.8.8",
 			DirectDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),
 			IndependentDNSCache:     false,
 			EnableFakeDNS:           false,

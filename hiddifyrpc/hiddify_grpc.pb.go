@@ -19,37 +19,37 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Hiddify_SayHello_FullMethodName              = "/hiddifyrpc.Hiddify/SayHello"
-	Hiddify_SayHelloStream_FullMethodName        = "/hiddifyrpc.Hiddify/SayHelloStream"
-	Hiddify_Start_FullMethodName                 = "/hiddifyrpc.Hiddify/Start"
-	Hiddify_CoreInfoListener_FullMethodName      = "/hiddifyrpc.Hiddify/CoreInfoListener"
-	Hiddify_OutboundsInfo_FullMethodName         = "/hiddifyrpc.Hiddify/OutboundsInfo"
-	Hiddify_MainOutboundsInfo_FullMethodName     = "/hiddifyrpc.Hiddify/MainOutboundsInfo"
-	Hiddify_GetSystemInfo_FullMethodName         = "/hiddifyrpc.Hiddify/GetSystemInfo"
-	Hiddify_Setup_FullMethodName                 = "/hiddifyrpc.Hiddify/Setup"
-	Hiddify_Parse_FullMethodName                 = "/hiddifyrpc.Hiddify/Parse"
-	Hiddify_StartService_FullMethodName          = "/hiddifyrpc.Hiddify/StartService"
-	Hiddify_Stop_FullMethodName                  = "/hiddifyrpc.Hiddify/Stop"
-	Hiddify_Restart_FullMethodName               = "/hiddifyrpc.Hiddify/Restart"
-	Hiddify_SelectOutbound_FullMethodName        = "/hiddifyrpc.Hiddify/SelectOutbound"
-	Hiddify_UrlTest_FullMethodName               = "/hiddifyrpc.Hiddify/UrlTest"
-	Hiddify_GenerateWarpConfig_FullMethodName    = "/hiddifyrpc.Hiddify/GenerateWarpConfig"
-	Hiddify_GetSystemProxyStatus_FullMethodName  = "/hiddifyrpc.Hiddify/GetSystemProxyStatus"
-	Hiddify_SetSystemProxyEnabled_FullMethodName = "/hiddifyrpc.Hiddify/SetSystemProxyEnabled"
-	Hiddify_LogListener_FullMethodName           = "/hiddifyrpc.Hiddify/LogListener"
+	BarVPN_SayHello_FullMethodName              = "/hiddifyrpc.BarVPN/SayHello"
+	BarVPN_SayHelloStream_FullMethodName        = "/hiddifyrpc.BarVPN/SayHelloStream"
+	BarVPN_Start_FullMethodName                 = "/hiddifyrpc.BarVPN/Start"
+	BarVPN_CoreInfoListener_FullMethodName      = "/hiddifyrpc.BarVPN/CoreInfoListener"
+	BarVPN_OutboundsInfo_FullMethodName         = "/hiddifyrpc.BarVPN/OutboundsInfo"
+	BarVPN_MainOutboundsInfo_FullMethodName     = "/hiddifyrpc.BarVPN/MainOutboundsInfo"
+	BarVPN_GetSystemInfo_FullMethodName         = "/hiddifyrpc.BarVPN/GetSystemInfo"
+	BarVPN_Setup_FullMethodName                 = "/hiddifyrpc.BarVPN/Setup"
+	BarVPN_Parse_FullMethodName                 = "/hiddifyrpc.BarVPN/Parse"
+	BarVPN_StartService_FullMethodName          = "/hiddifyrpc.BarVPN/StartService"
+	BarVPN_Stop_FullMethodName                  = "/hiddifyrpc.BarVPN/Stop"
+	BarVPN_Restart_FullMethodName               = "/hiddifyrpc.BarVPN/Restart"
+	BarVPN_SelectOutbound_FullMethodName        = "/hiddifyrpc.BarVPN/SelectOutbound"
+	BarVPN_UrlTest_FullMethodName               = "/hiddifyrpc.BarVPN/UrlTest"
+	BarVPN_GenerateWarpConfig_FullMethodName    = "/hiddifyrpc.BarVPN/GenerateWarpConfig"
+	BarVPN_GetSystemProxyStatus_FullMethodName  = "/hiddifyrpc.BarVPN/GetSystemProxyStatus"
+	BarVPN_SetSystemProxyEnabled_FullMethodName = "/hiddifyrpc.BarVPN/SetSystemProxyEnabled"
+	BarVPN_LogListener_FullMethodName           = "/hiddifyrpc.BarVPN/LogListener"
 )
 
-// HiddifyClient is the client API for Hiddify service.
+// BarVPNClient is the client API for BarVPN service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type HiddifyClient interface {
+type BarVPNClient interface {
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
-	SayHelloStream(ctx context.Context, opts ...grpc.CallOption) (Hiddify_SayHelloStreamClient, error)
+	SayHelloStream(ctx context.Context, opts ...grpc.CallOption) (BarVPN_SayHelloStreamClient, error)
 	Start(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error)
-	CoreInfoListener(ctx context.Context, opts ...grpc.CallOption) (Hiddify_CoreInfoListenerClient, error)
-	OutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_OutboundsInfoClient, error)
-	MainOutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_MainOutboundsInfoClient, error)
-	GetSystemInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_GetSystemInfoClient, error)
+	CoreInfoListener(ctx context.Context, opts ...grpc.CallOption) (BarVPN_CoreInfoListenerClient, error)
+	OutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_OutboundsInfoClient, error)
+	MainOutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_MainOutboundsInfoClient, error)
+	GetSystemInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_GetSystemInfoClient, error)
 	Setup(ctx context.Context, in *SetupRequest, opts ...grpc.CallOption) (*Response, error)
 	Parse(ctx context.Context, in *ParseRequest, opts ...grpc.CallOption) (*ParseResponse, error)
 	//rpc ChangeConfigOptions (ChangeConfigOptionsRequest) returns (CoreInfoResponse);
@@ -62,28 +62,28 @@ type HiddifyClient interface {
 	GenerateWarpConfig(ctx context.Context, in *GenerateWarpConfigRequest, opts ...grpc.CallOption) (*WarpGenerationResponse, error)
 	GetSystemProxyStatus(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*SystemProxyStatus, error)
 	SetSystemProxyEnabled(ctx context.Context, in *SetSystemProxyEnabledRequest, opts ...grpc.CallOption) (*Response, error)
-	LogListener(ctx context.Context, opts ...grpc.CallOption) (Hiddify_LogListenerClient, error)
+	LogListener(ctx context.Context, opts ...grpc.CallOption) (BarVPN_LogListenerClient, error)
 }
 
 type hiddifyClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewHiddifyClient(cc grpc.ClientConnInterface) HiddifyClient {
+func NewBarVPNClient(cc grpc.ClientConnInterface) BarVPNClient {
 	return &hiddifyClient{cc}
 }
 
 func (c *hiddifyClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error) {
 	out := new(HelloResponse)
-	err := c.cc.Invoke(ctx, Hiddify_SayHello_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_SayHello_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *hiddifyClient) SayHelloStream(ctx context.Context, opts ...grpc.CallOption) (Hiddify_SayHelloStreamClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[0], Hiddify_SayHelloStream_FullMethodName, opts...)
+func (c *hiddifyClient) SayHelloStream(ctx context.Context, opts ...grpc.CallOption) (BarVPN_SayHelloStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[0], BarVPN_SayHelloStream_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func (c *hiddifyClient) SayHelloStream(ctx context.Context, opts ...grpc.CallOpt
 	return x, nil
 }
 
-type Hiddify_SayHelloStreamClient interface {
+type BarVPN_SayHelloStreamClient interface {
 	Send(*HelloRequest) error
 	Recv() (*HelloResponse, error)
 	grpc.ClientStream
@@ -115,15 +115,15 @@ func (x *hiddifySayHelloStreamClient) Recv() (*HelloResponse, error) {
 
 func (c *hiddifyClient) Start(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
 	out := new(CoreInfoResponse)
-	err := c.cc.Invoke(ctx, Hiddify_Start_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_Start_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *hiddifyClient) CoreInfoListener(ctx context.Context, opts ...grpc.CallOption) (Hiddify_CoreInfoListenerClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[1], Hiddify_CoreInfoListener_FullMethodName, opts...)
+func (c *hiddifyClient) CoreInfoListener(ctx context.Context, opts ...grpc.CallOption) (BarVPN_CoreInfoListenerClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[1], BarVPN_CoreInfoListener_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (c *hiddifyClient) CoreInfoListener(ctx context.Context, opts ...grpc.CallO
 	return x, nil
 }
 
-type Hiddify_CoreInfoListenerClient interface {
+type BarVPN_CoreInfoListenerClient interface {
 	Send(*StopRequest) error
 	Recv() (*CoreInfoResponse, error)
 	grpc.ClientStream
@@ -153,8 +153,8 @@ func (x *hiddifyCoreInfoListenerClient) Recv() (*CoreInfoResponse, error) {
 	return m, nil
 }
 
-func (c *hiddifyClient) OutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_OutboundsInfoClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[2], Hiddify_OutboundsInfo_FullMethodName, opts...)
+func (c *hiddifyClient) OutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_OutboundsInfoClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[2], BarVPN_OutboundsInfo_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,7 +162,7 @@ func (c *hiddifyClient) OutboundsInfo(ctx context.Context, opts ...grpc.CallOpti
 	return x, nil
 }
 
-type Hiddify_OutboundsInfoClient interface {
+type BarVPN_OutboundsInfoClient interface {
 	Send(*StopRequest) error
 	Recv() (*OutboundGroupList, error)
 	grpc.ClientStream
@@ -184,8 +184,8 @@ func (x *hiddifyOutboundsInfoClient) Recv() (*OutboundGroupList, error) {
 	return m, nil
 }
 
-func (c *hiddifyClient) MainOutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_MainOutboundsInfoClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[3], Hiddify_MainOutboundsInfo_FullMethodName, opts...)
+func (c *hiddifyClient) MainOutboundsInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_MainOutboundsInfoClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[3], BarVPN_MainOutboundsInfo_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -193,7 +193,7 @@ func (c *hiddifyClient) MainOutboundsInfo(ctx context.Context, opts ...grpc.Call
 	return x, nil
 }
 
-type Hiddify_MainOutboundsInfoClient interface {
+type BarVPN_MainOutboundsInfoClient interface {
 	Send(*StopRequest) error
 	Recv() (*OutboundGroupList, error)
 	grpc.ClientStream
@@ -215,8 +215,8 @@ func (x *hiddifyMainOutboundsInfoClient) Recv() (*OutboundGroupList, error) {
 	return m, nil
 }
 
-func (c *hiddifyClient) GetSystemInfo(ctx context.Context, opts ...grpc.CallOption) (Hiddify_GetSystemInfoClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[4], Hiddify_GetSystemInfo_FullMethodName, opts...)
+func (c *hiddifyClient) GetSystemInfo(ctx context.Context, opts ...grpc.CallOption) (BarVPN_GetSystemInfoClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[4], BarVPN_GetSystemInfo_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -224,7 +224,7 @@ func (c *hiddifyClient) GetSystemInfo(ctx context.Context, opts ...grpc.CallOpti
 	return x, nil
 }
 
-type Hiddify_GetSystemInfoClient interface {
+type BarVPN_GetSystemInfoClient interface {
 	Send(*StopRequest) error
 	Recv() (*SystemInfo, error)
 	grpc.ClientStream
@@ -248,7 +248,7 @@ func (x *hiddifyGetSystemInfoClient) Recv() (*SystemInfo, error) {
 
 func (c *hiddifyClient) Setup(ctx context.Context, in *SetupRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, Hiddify_Setup_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_Setup_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -257,7 +257,7 @@ func (c *hiddifyClient) Setup(ctx context.Context, in *SetupRequest, opts ...grp
 
 func (c *hiddifyClient) Parse(ctx context.Context, in *ParseRequest, opts ...grpc.CallOption) (*ParseResponse, error) {
 	out := new(ParseResponse)
-	err := c.cc.Invoke(ctx, Hiddify_Parse_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_Parse_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func (c *hiddifyClient) Parse(ctx context.Context, in *ParseRequest, opts ...grp
 
 func (c *hiddifyClient) StartService(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
 	out := new(CoreInfoResponse)
-	err := c.cc.Invoke(ctx, Hiddify_StartService_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_StartService_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -275,7 +275,7 @@ func (c *hiddifyClient) StartService(ctx context.Context, in *StartRequest, opts
 
 func (c *hiddifyClient) Stop(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
 	out := new(CoreInfoResponse)
-	err := c.cc.Invoke(ctx, Hiddify_Stop_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_Stop_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -284,7 +284,7 @@ func (c *hiddifyClient) Stop(ctx context.Context, in *Empty, opts ...grpc.CallOp
 
 func (c *hiddifyClient) Restart(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
 	out := new(CoreInfoResponse)
-	err := c.cc.Invoke(ctx, Hiddify_Restart_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_Restart_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -293,7 +293,7 @@ func (c *hiddifyClient) Restart(ctx context.Context, in *StartRequest, opts ...g
 
 func (c *hiddifyClient) SelectOutbound(ctx context.Context, in *SelectOutboundRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, Hiddify_SelectOutbound_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_SelectOutbound_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -302,7 +302,7 @@ func (c *hiddifyClient) SelectOutbound(ctx context.Context, in *SelectOutboundRe
 
 func (c *hiddifyClient) UrlTest(ctx context.Context, in *UrlTestRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, Hiddify_UrlTest_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_UrlTest_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -311,7 +311,7 @@ func (c *hiddifyClient) UrlTest(ctx context.Context, in *UrlTestRequest, opts ..
 
 func (c *hiddifyClient) GenerateWarpConfig(ctx context.Context, in *GenerateWarpConfigRequest, opts ...grpc.CallOption) (*WarpGenerationResponse, error) {
 	out := new(WarpGenerationResponse)
-	err := c.cc.Invoke(ctx, Hiddify_GenerateWarpConfig_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_GenerateWarpConfig_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -320,7 +320,7 @@ func (c *hiddifyClient) GenerateWarpConfig(ctx context.Context, in *GenerateWarp
 
 func (c *hiddifyClient) GetSystemProxyStatus(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*SystemProxyStatus, error) {
 	out := new(SystemProxyStatus)
-	err := c.cc.Invoke(ctx, Hiddify_GetSystemProxyStatus_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_GetSystemProxyStatus_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -329,15 +329,15 @@ func (c *hiddifyClient) GetSystemProxyStatus(ctx context.Context, in *Empty, opt
 
 func (c *hiddifyClient) SetSystemProxyEnabled(ctx context.Context, in *SetSystemProxyEnabledRequest, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, Hiddify_SetSystemProxyEnabled_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, BarVPN_SetSystemProxyEnabled_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *hiddifyClient) LogListener(ctx context.Context, opts ...grpc.CallOption) (Hiddify_LogListenerClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Hiddify_ServiceDesc.Streams[5], Hiddify_LogListener_FullMethodName, opts...)
+func (c *hiddifyClient) LogListener(ctx context.Context, opts ...grpc.CallOption) (BarVPN_LogListenerClient, error) {
+	stream, err := c.cc.NewStream(ctx, &BarVPN_ServiceDesc.Streams[5], BarVPN_LogListener_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -345,7 +345,7 @@ func (c *hiddifyClient) LogListener(ctx context.Context, opts ...grpc.CallOption
 	return x, nil
 }
 
-type Hiddify_LogListenerClient interface {
+type BarVPN_LogListenerClient interface {
 	Send(*StopRequest) error
 	Recv() (*LogMessage, error)
 	grpc.ClientStream
@@ -367,17 +367,17 @@ func (x *hiddifyLogListenerClient) Recv() (*LogMessage, error) {
 	return m, nil
 }
 
-// HiddifyServer is the server API for Hiddify service.
-// All implementations must embed UnimplementedHiddifyServer
+// BarVPNServer is the server API for BarVPN service.
+// All implementations must embed UnimplementedBarVPNServer
 // for forward compatibility
-type HiddifyServer interface {
+type BarVPNServer interface {
 	SayHello(context.Context, *HelloRequest) (*HelloResponse, error)
-	SayHelloStream(Hiddify_SayHelloStreamServer) error
+	SayHelloStream(BarVPN_SayHelloStreamServer) error
 	Start(context.Context, *StartRequest) (*CoreInfoResponse, error)
-	CoreInfoListener(Hiddify_CoreInfoListenerServer) error
-	OutboundsInfo(Hiddify_OutboundsInfoServer) error
-	MainOutboundsInfo(Hiddify_MainOutboundsInfoServer) error
-	GetSystemInfo(Hiddify_GetSystemInfoServer) error
+	CoreInfoListener(BarVPN_CoreInfoListenerServer) error
+	OutboundsInfo(BarVPN_OutboundsInfoServer) error
+	MainOutboundsInfo(BarVPN_MainOutboundsInfoServer) error
+	GetSystemInfo(BarVPN_GetSystemInfoServer) error
 	Setup(context.Context, *SetupRequest) (*Response, error)
 	Parse(context.Context, *ParseRequest) (*ParseResponse, error)
 	//rpc ChangeConfigOptions (ChangeConfigOptionsRequest) returns (CoreInfoResponse);
@@ -390,104 +390,104 @@ type HiddifyServer interface {
 	GenerateWarpConfig(context.Context, *GenerateWarpConfigRequest) (*WarpGenerationResponse, error)
 	GetSystemProxyStatus(context.Context, *Empty) (*SystemProxyStatus, error)
 	SetSystemProxyEnabled(context.Context, *SetSystemProxyEnabledRequest) (*Response, error)
-	LogListener(Hiddify_LogListenerServer) error
-	mustEmbedUnimplementedHiddifyServer()
+	LogListener(BarVPN_LogListenerServer) error
+	mustEmbedUnimplementedBarVPNServer()
 }
 
-// UnimplementedHiddifyServer must be embedded to have forward compatible implementations.
-type UnimplementedHiddifyServer struct {
+// UnimplementedBarVPNServer must be embedded to have forward compatible implementations.
+type UnimplementedBarVPNServer struct {
 }
 
-func (UnimplementedHiddifyServer) SayHello(context.Context, *HelloRequest) (*HelloResponse, error) {
+func (UnimplementedBarVPNServer) SayHello(context.Context, *HelloRequest) (*HelloResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
-func (UnimplementedHiddifyServer) SayHelloStream(Hiddify_SayHelloStreamServer) error {
+func (UnimplementedBarVPNServer) SayHelloStream(BarVPN_SayHelloStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method SayHelloStream not implemented")
 }
-func (UnimplementedHiddifyServer) Start(context.Context, *StartRequest) (*CoreInfoResponse, error) {
+func (UnimplementedBarVPNServer) Start(context.Context, *StartRequest) (*CoreInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Start not implemented")
 }
-func (UnimplementedHiddifyServer) CoreInfoListener(Hiddify_CoreInfoListenerServer) error {
+func (UnimplementedBarVPNServer) CoreInfoListener(BarVPN_CoreInfoListenerServer) error {
 	return status.Errorf(codes.Unimplemented, "method CoreInfoListener not implemented")
 }
-func (UnimplementedHiddifyServer) OutboundsInfo(Hiddify_OutboundsInfoServer) error {
+func (UnimplementedBarVPNServer) OutboundsInfo(BarVPN_OutboundsInfoServer) error {
 	return status.Errorf(codes.Unimplemented, "method OutboundsInfo not implemented")
 }
-func (UnimplementedHiddifyServer) MainOutboundsInfo(Hiddify_MainOutboundsInfoServer) error {
+func (UnimplementedBarVPNServer) MainOutboundsInfo(BarVPN_MainOutboundsInfoServer) error {
 	return status.Errorf(codes.Unimplemented, "method MainOutboundsInfo not implemented")
 }
-func (UnimplementedHiddifyServer) GetSystemInfo(Hiddify_GetSystemInfoServer) error {
+func (UnimplementedBarVPNServer) GetSystemInfo(BarVPN_GetSystemInfoServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetSystemInfo not implemented")
 }
-func (UnimplementedHiddifyServer) Setup(context.Context, *SetupRequest) (*Response, error) {
+func (UnimplementedBarVPNServer) Setup(context.Context, *SetupRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Setup not implemented")
 }
-func (UnimplementedHiddifyServer) Parse(context.Context, *ParseRequest) (*ParseResponse, error) {
+func (UnimplementedBarVPNServer) Parse(context.Context, *ParseRequest) (*ParseResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Parse not implemented")
 }
-func (UnimplementedHiddifyServer) StartService(context.Context, *StartRequest) (*CoreInfoResponse, error) {
+func (UnimplementedBarVPNServer) StartService(context.Context, *StartRequest) (*CoreInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartService not implemented")
 }
-func (UnimplementedHiddifyServer) Stop(context.Context, *Empty) (*CoreInfoResponse, error) {
+func (UnimplementedBarVPNServer) Stop(context.Context, *Empty) (*CoreInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
 }
-func (UnimplementedHiddifyServer) Restart(context.Context, *StartRequest) (*CoreInfoResponse, error) {
+func (UnimplementedBarVPNServer) Restart(context.Context, *StartRequest) (*CoreInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Restart not implemented")
 }
-func (UnimplementedHiddifyServer) SelectOutbound(context.Context, *SelectOutboundRequest) (*Response, error) {
+func (UnimplementedBarVPNServer) SelectOutbound(context.Context, *SelectOutboundRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SelectOutbound not implemented")
 }
-func (UnimplementedHiddifyServer) UrlTest(context.Context, *UrlTestRequest) (*Response, error) {
+func (UnimplementedBarVPNServer) UrlTest(context.Context, *UrlTestRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UrlTest not implemented")
 }
-func (UnimplementedHiddifyServer) GenerateWarpConfig(context.Context, *GenerateWarpConfigRequest) (*WarpGenerationResponse, error) {
+func (UnimplementedBarVPNServer) GenerateWarpConfig(context.Context, *GenerateWarpConfigRequest) (*WarpGenerationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateWarpConfig not implemented")
 }
-func (UnimplementedHiddifyServer) GetSystemProxyStatus(context.Context, *Empty) (*SystemProxyStatus, error) {
+func (UnimplementedBarVPNServer) GetSystemProxyStatus(context.Context, *Empty) (*SystemProxyStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSystemProxyStatus not implemented")
 }
-func (UnimplementedHiddifyServer) SetSystemProxyEnabled(context.Context, *SetSystemProxyEnabledRequest) (*Response, error) {
+func (UnimplementedBarVPNServer) SetSystemProxyEnabled(context.Context, *SetSystemProxyEnabledRequest) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetSystemProxyEnabled not implemented")
 }
-func (UnimplementedHiddifyServer) LogListener(Hiddify_LogListenerServer) error {
+func (UnimplementedBarVPNServer) LogListener(BarVPN_LogListenerServer) error {
 	return status.Errorf(codes.Unimplemented, "method LogListener not implemented")
 }
-func (UnimplementedHiddifyServer) mustEmbedUnimplementedHiddifyServer() {}
+func (UnimplementedBarVPNServer) mustEmbedUnimplementedBarVPNServer() {}
 
-// UnsafeHiddifyServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to HiddifyServer will
+// UnsafeBarVPNServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BarVPNServer will
 // result in compilation errors.
-type UnsafeHiddifyServer interface {
-	mustEmbedUnimplementedHiddifyServer()
+type UnsafeBarVPNServer interface {
+	mustEmbedUnimplementedBarVPNServer()
 }
 
-func RegisterHiddifyServer(s grpc.ServiceRegistrar, srv HiddifyServer) {
-	s.RegisterService(&Hiddify_ServiceDesc, srv)
+func RegisterBarVPNServer(s grpc.ServiceRegistrar, srv BarVPNServer) {
+	s.RegisterService(&BarVPN_ServiceDesc, srv)
 }
 
-func _Hiddify_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).SayHello(ctx, in)
+		return srv.(BarVPNServer).SayHello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_SayHello_FullMethodName,
+		FullMethod: BarVPN_SayHello_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).SayHello(ctx, req.(*HelloRequest))
+		return srv.(BarVPNServer).SayHello(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_SayHelloStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).SayHelloStream(&hiddifySayHelloStreamServer{stream})
+func _BarVPN_SayHelloStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).SayHelloStream(&hiddifySayHelloStreamServer{stream})
 }
 
-type Hiddify_SayHelloStreamServer interface {
+type BarVPN_SayHelloStreamServer interface {
 	Send(*HelloResponse) error
 	Recv() (*HelloRequest, error)
 	grpc.ServerStream
@@ -509,29 +509,29 @@ func (x *hiddifySayHelloStreamServer) Recv() (*HelloRequest, error) {
 	return m, nil
 }
 
-func _Hiddify_Start_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_Start_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).Start(ctx, in)
+		return srv.(BarVPNServer).Start(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_Start_FullMethodName,
+		FullMethod: BarVPN_Start_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).Start(ctx, req.(*StartRequest))
+		return srv.(BarVPNServer).Start(ctx, req.(*StartRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_CoreInfoListener_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).CoreInfoListener(&hiddifyCoreInfoListenerServer{stream})
+func _BarVPN_CoreInfoListener_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).CoreInfoListener(&hiddifyCoreInfoListenerServer{stream})
 }
 
-type Hiddify_CoreInfoListenerServer interface {
+type BarVPN_CoreInfoListenerServer interface {
 	Send(*CoreInfoResponse) error
 	Recv() (*StopRequest, error)
 	grpc.ServerStream
@@ -553,11 +553,11 @@ func (x *hiddifyCoreInfoListenerServer) Recv() (*StopRequest, error) {
 	return m, nil
 }
 
-func _Hiddify_OutboundsInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).OutboundsInfo(&hiddifyOutboundsInfoServer{stream})
+func _BarVPN_OutboundsInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).OutboundsInfo(&hiddifyOutboundsInfoServer{stream})
 }
 
-type Hiddify_OutboundsInfoServer interface {
+type BarVPN_OutboundsInfoServer interface {
 	Send(*OutboundGroupList) error
 	Recv() (*StopRequest, error)
 	grpc.ServerStream
@@ -579,11 +579,11 @@ func (x *hiddifyOutboundsInfoServer) Recv() (*StopRequest, error) {
 	return m, nil
 }
 
-func _Hiddify_MainOutboundsInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).MainOutboundsInfo(&hiddifyMainOutboundsInfoServer{stream})
+func _BarVPN_MainOutboundsInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).MainOutboundsInfo(&hiddifyMainOutboundsInfoServer{stream})
 }
 
-type Hiddify_MainOutboundsInfoServer interface {
+type BarVPN_MainOutboundsInfoServer interface {
 	Send(*OutboundGroupList) error
 	Recv() (*StopRequest, error)
 	grpc.ServerStream
@@ -605,11 +605,11 @@ func (x *hiddifyMainOutboundsInfoServer) Recv() (*StopRequest, error) {
 	return m, nil
 }
 
-func _Hiddify_GetSystemInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).GetSystemInfo(&hiddifyGetSystemInfoServer{stream})
+func _BarVPN_GetSystemInfo_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).GetSystemInfo(&hiddifyGetSystemInfoServer{stream})
 }
 
-type Hiddify_GetSystemInfoServer interface {
+type BarVPN_GetSystemInfoServer interface {
 	Send(*SystemInfo) error
 	Recv() (*StopRequest, error)
 	grpc.ServerStream
@@ -631,191 +631,191 @@ func (x *hiddifyGetSystemInfoServer) Recv() (*StopRequest, error) {
 	return m, nil
 }
 
-func _Hiddify_Setup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_Setup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).Setup(ctx, in)
+		return srv.(BarVPNServer).Setup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_Setup_FullMethodName,
+		FullMethod: BarVPN_Setup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).Setup(ctx, req.(*SetupRequest))
+		return srv.(BarVPNServer).Setup(ctx, req.(*SetupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_Parse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_Parse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ParseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).Parse(ctx, in)
+		return srv.(BarVPNServer).Parse(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_Parse_FullMethodName,
+		FullMethod: BarVPN_Parse_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).Parse(ctx, req.(*ParseRequest))
+		return srv.(BarVPNServer).Parse(ctx, req.(*ParseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_StartService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_StartService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).StartService(ctx, in)
+		return srv.(BarVPNServer).StartService(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_StartService_FullMethodName,
+		FullMethod: BarVPN_StartService_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).StartService(ctx, req.(*StartRequest))
+		return srv.(BarVPNServer).StartService(ctx, req.(*StartRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).Stop(ctx, in)
+		return srv.(BarVPNServer).Stop(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_Stop_FullMethodName,
+		FullMethod: BarVPN_Stop_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).Stop(ctx, req.(*Empty))
+		return srv.(BarVPNServer).Stop(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_Restart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_Restart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).Restart(ctx, in)
+		return srv.(BarVPNServer).Restart(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_Restart_FullMethodName,
+		FullMethod: BarVPN_Restart_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).Restart(ctx, req.(*StartRequest))
+		return srv.(BarVPNServer).Restart(ctx, req.(*StartRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_SelectOutbound_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_SelectOutbound_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SelectOutboundRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).SelectOutbound(ctx, in)
+		return srv.(BarVPNServer).SelectOutbound(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_SelectOutbound_FullMethodName,
+		FullMethod: BarVPN_SelectOutbound_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).SelectOutbound(ctx, req.(*SelectOutboundRequest))
+		return srv.(BarVPNServer).SelectOutbound(ctx, req.(*SelectOutboundRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_UrlTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_UrlTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UrlTestRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).UrlTest(ctx, in)
+		return srv.(BarVPNServer).UrlTest(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_UrlTest_FullMethodName,
+		FullMethod: BarVPN_UrlTest_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).UrlTest(ctx, req.(*UrlTestRequest))
+		return srv.(BarVPNServer).UrlTest(ctx, req.(*UrlTestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_GenerateWarpConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_GenerateWarpConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateWarpConfigRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).GenerateWarpConfig(ctx, in)
+		return srv.(BarVPNServer).GenerateWarpConfig(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_GenerateWarpConfig_FullMethodName,
+		FullMethod: BarVPN_GenerateWarpConfig_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).GenerateWarpConfig(ctx, req.(*GenerateWarpConfigRequest))
+		return srv.(BarVPNServer).GenerateWarpConfig(ctx, req.(*GenerateWarpConfigRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_GetSystemProxyStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_GetSystemProxyStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).GetSystemProxyStatus(ctx, in)
+		return srv.(BarVPNServer).GetSystemProxyStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_GetSystemProxyStatus_FullMethodName,
+		FullMethod: BarVPN_GetSystemProxyStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).GetSystemProxyStatus(ctx, req.(*Empty))
+		return srv.(BarVPNServer).GetSystemProxyStatus(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_SetSystemProxyEnabled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BarVPN_SetSystemProxyEnabled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetSystemProxyEnabledRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HiddifyServer).SetSystemProxyEnabled(ctx, in)
+		return srv.(BarVPNServer).SetSystemProxyEnabled(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Hiddify_SetSystemProxyEnabled_FullMethodName,
+		FullMethod: BarVPN_SetSystemProxyEnabled_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HiddifyServer).SetSystemProxyEnabled(ctx, req.(*SetSystemProxyEnabledRequest))
+		return srv.(BarVPNServer).SetSystemProxyEnabled(ctx, req.(*SetSystemProxyEnabledRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Hiddify_LogListener_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(HiddifyServer).LogListener(&hiddifyLogListenerServer{stream})
+func _BarVPN_LogListener_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(BarVPNServer).LogListener(&hiddifyLogListenerServer{stream})
 }
 
-type Hiddify_LogListenerServer interface {
+type BarVPN_LogListenerServer interface {
 	Send(*LogMessage) error
 	Recv() (*StopRequest, error)
 	grpc.ServerStream
@@ -837,96 +837,96 @@ func (x *hiddifyLogListenerServer) Recv() (*StopRequest, error) {
 	return m, nil
 }
 
-// Hiddify_ServiceDesc is the grpc.ServiceDesc for Hiddify service.
+// BarVPN_ServiceDesc is the grpc.ServiceDesc for BarVPN service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Hiddify_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hiddifyrpc.Hiddify",
-	HandlerType: (*HiddifyServer)(nil),
+var BarVPN_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "hiddifyrpc.BarVPN",
+	HandlerType: (*BarVPNServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "SayHello",
-			Handler:    _Hiddify_SayHello_Handler,
+			Handler:    _BarVPN_SayHello_Handler,
 		},
 		{
 			MethodName: "Start",
-			Handler:    _Hiddify_Start_Handler,
+			Handler:    _BarVPN_Start_Handler,
 		},
 		{
 			MethodName: "Setup",
-			Handler:    _Hiddify_Setup_Handler,
+			Handler:    _BarVPN_Setup_Handler,
 		},
 		{
 			MethodName: "Parse",
-			Handler:    _Hiddify_Parse_Handler,
+			Handler:    _BarVPN_Parse_Handler,
 		},
 		{
 			MethodName: "StartService",
-			Handler:    _Hiddify_StartService_Handler,
+			Handler:    _BarVPN_StartService_Handler,
 		},
 		{
 			MethodName: "Stop",
-			Handler:    _Hiddify_Stop_Handler,
+			Handler:    _BarVPN_Stop_Handler,
 		},
 		{
 			MethodName: "Restart",
-			Handler:    _Hiddify_Restart_Handler,
+			Handler:    _BarVPN_Restart_Handler,
 		},
 		{
 			MethodName: "SelectOutbound",
-			Handler:    _Hiddify_SelectOutbound_Handler,
+			Handler:    _BarVPN_SelectOutbound_Handler,
 		},
 		{
 			MethodName: "UrlTest",
-			Handler:    _Hiddify_UrlTest_Handler,
+			Handler:    _BarVPN_UrlTest_Handler,
 		},
 		{
 			MethodName: "GenerateWarpConfig",
-			Handler:    _Hiddify_GenerateWarpConfig_Handler,
+			Handler:    _BarVPN_GenerateWarpConfig_Handler,
 		},
 		{
 			MethodName: "GetSystemProxyStatus",
-			Handler:    _Hiddify_GetSystemProxyStatus_Handler,
+			Handler:    _BarVPN_GetSystemProxyStatus_Handler,
 		},
 		{
 			MethodName: "SetSystemProxyEnabled",
-			Handler:    _Hiddify_SetSystemProxyEnabled_Handler,
+			Handler:    _BarVPN_SetSystemProxyEnabled_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "SayHelloStream",
-			Handler:       _Hiddify_SayHelloStream_Handler,
+			Handler:       _BarVPN_SayHelloStream_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "CoreInfoListener",
-			Handler:       _Hiddify_CoreInfoListener_Handler,
+			Handler:       _BarVPN_CoreInfoListener_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "OutboundsInfo",
-			Handler:       _Hiddify_OutboundsInfo_Handler,
+			Handler:       _BarVPN_OutboundsInfo_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "MainOutboundsInfo",
-			Handler:       _Hiddify_MainOutboundsInfo_Handler,
+			Handler:       _BarVPN_MainOutboundsInfo_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "GetSystemInfo",
-			Handler:       _Hiddify_GetSystemInfo_Handler,
+			Handler:       _BarVPN_GetSystemInfo_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "LogListener",
-			Handler:       _Hiddify_LogListener_Handler,
+			Handler:       _BarVPN_LogListener_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},

@@ -20,7 +20,7 @@ var commandRun = &cobra.Command{
 
 func init() {
 	commandRun.PersistentFlags().BoolP("help", "", false, "help for this command")
-	commandRun.Flags().StringVarP(&hiddifySettingPath, "hiddify", "h", "", "Hiddify Setting JSON Path")
+	commandRun.Flags().StringVarP(&hiddifySettingPath, "hiddify", "h", "", "BarVPN Setting JSON Path")
 	commandRun.Flags().StringVarP(&configPath, "config", "c", "", "proxy config path or url")
 
 	commandRun.MarkFlagRequired("config")

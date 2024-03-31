@@ -19,7 +19,7 @@ var (
 	groupInfoOnlyClient *libbox.CommandClient
 )
 
-func (s *server) GetSystemInfo(stream pb.Hiddify_GetSystemInfoServer) error {
+func (s *server) GetSystemInfo(stream pb.BarVPN_GetSystemInfoServer) error {
 	if statusClient == nil {
 		statusClient = libbox.NewCommandClient(
 			&CommandClientHandler{},
@@ -55,7 +55,7 @@ func (s *server) GetSystemInfo(stream pb.Hiddify_GetSystemInfoServer) error {
 	}
 }
 
-func (s *server) OutboundsInfo(stream pb.Hiddify_OutboundsInfoServer) error {
+func (s *server) OutboundsInfo(stream pb.BarVPN_OutboundsInfoServer) error {
 	if groupClient == nil {
 		groupClient = libbox.NewCommandClient(
 			&CommandClientHandler{},
@@ -91,7 +91,7 @@ func (s *server) OutboundsInfo(stream pb.Hiddify_OutboundsInfoServer) error {
 	}
 }
 
-func (s *server) MainOutboundsInfo(stream pb.Hiddify_MainOutboundsInfoServer) error {
+func (s *server) MainOutboundsInfo(stream pb.BarVPN_MainOutboundsInfoServer) error {
 	if groupInfoOnlyClient == nil {
 		groupInfoOnlyClient = libbox.NewCommandClient(
 			&CommandClientHandler{},

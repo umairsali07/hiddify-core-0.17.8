@@ -79,7 +79,7 @@ func readConfigContent(configPath string) (ConfigResult, error) {
 			fmt.Println("Error creating request:", err)
 			return ConfigResult{}, err
 		}
-		req.Header.Set("User-Agent", "HiddifyNext/17.5.0 ("+runtime.GOOS+") like ClashMeta v2ray sing-box")
+		req.Header.Set("User-Agent", "BarVPNNext/17.5.0 ("+runtime.GOOS+") like ClashMeta v2ray sing-box")
 		resp, err := client.Do(req)
 		if err != nil {
 			fmt.Println("Error making GET request:", err)

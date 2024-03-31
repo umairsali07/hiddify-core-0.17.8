@@ -14,7 +14,7 @@ import (
 )
 
 type server struct {
-	pb.UnimplementedHiddifyServer
+	pb.UnimplementedBarVPNServer
 }
 
 //export StartGrpcServer
@@ -38,7 +38,7 @@ func StartGrpcServerGo(listenAddressG string) error {
 		return err
 	}
 	s := grpc.NewServer()
-	pb.RegisterHiddifyServer(s, &server{})
+	pb.RegisterBarVPNServer(s, &server{})
 	log.Printf("Server listening on %s", listenAddressG)
 	go func() {
 		if err := s.Serve(lis); err != nil {

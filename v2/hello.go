@@ -11,7 +11,7 @@ import (
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloResponse, error) {
 	return &pb.HelloResponse{Message: "Hello, " + in.Name}, nil
 }
-func (s *server) SayHelloStream(stream pb.Hiddify_SayHelloStreamServer) error {
+func (s *server) SayHelloStream(stream pb.BarVPN_SayHelloStreamServer) error {
 
 	for {
 		req, err := stream.Recv()
