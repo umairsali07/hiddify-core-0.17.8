@@ -1,6 +1,7 @@
 name: Release
 on:
   push:
+  workflow_call:
     branches:
       - main
     tags:
