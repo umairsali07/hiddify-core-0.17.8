@@ -89,7 +89,7 @@ func generateRandomPort() uint16 {
 
 func generateWarp(license string, host string, port uint16, fakePackets string, fakePacketsSize string, fakePacketsDelay string) (*T.Outbound, error) {
 
-	_, _, wgConfig, err := warp.LoadOrCreateIdentityBarVPN(license, nil)
+	_, _, wgConfig, err := warp.LoadOrCreateIdentityHiddify(license, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -142,6 +142,6 @@ func GenerateWarpInfo(license string, oldAccountId string, oldAccessToken string
 		}
 	}
 
-	return warp.LoadOrCreateIdentityBarVPN(license, nil)
+	return warp.LoadOrCreateIdentityHiddify(license, nil)
 
 }
