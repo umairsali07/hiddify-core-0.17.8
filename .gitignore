@@ -1,4 +1,6 @@
 !/bin/.gitkeep
+!/bin/libcore.dll
+!/bin/BarVPNCli.exe
 .build
 .idea
 

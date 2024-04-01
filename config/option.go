@@ -87,9 +87,9 @@ type WarpOptions struct {
 func DefaultConfigOptions() *ConfigOptions {
 	return &ConfigOptions{
 		DNSOptions: DNSOptions{
-			RemoteDnsAddress:        "8.8.8.8",
+			RemoteDnsAddress:        "1.1.1.1",
 			RemoteDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),
-			DirectDnsAddress:        "8.8.8.8",
+			DirectDnsAddress:        "1.1.1.1",
 			DirectDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),
 			IndependentDNSCache:     false,
 			EnableFakeDNS:           false,
@@ -117,7 +117,7 @@ func DefaultConfigOptions() *ConfigOptions {
 		},
 		LogLevel:       "info",
 		EnableClashApi: true,
-		ClashApiPort:   6756,
+		ClashApiPort:   1998,
 		GeoIPPath:      "geoip.db",
 		GeoSitePath:    "geosite.db",
 		Rules:          []Rule{},

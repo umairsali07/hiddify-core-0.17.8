@@ -208,7 +208,7 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 					Listen:     option.NewListenAddress(netip.MustParseAddr(bind)),
 					ListenPort: opt.LocalDnsPort,
 				},
-				OverrideAddress: "8.8.8.8",
+				OverrideAddress: "1.1.1.1",
 				OverridePort:    53,
 			},
 		},
@@ -258,6 +258,82 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 			DefaultOptions: option.DefaultRule{
 				DomainSuffix: []string{"cdn-port.com"},
 				Outbound:     OutboundCDNTag,
+			},
+		},
+		// {
+		// 	Type: C.RuleTypeDefault,
+		// 	DefaultOptions: option.DefaultRule{
+		// 		RuleSet:  []string{"CDN"},
+		// 		Outbound: OutboundCDNTag,
+		// 	},
+		// },
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"23.237.196.11/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"5.44.253.136/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"23.237.232.162/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"107.151.6.244/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"23.237.196.125/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"67.220.191.162/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"107.151.6.244/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"181.233.124.56/32"},
+				Outbound: OutboundCDNTag,
+			},
+		},
+		{
+			Type: C.RuleTypeDefault,
+			DefaultOptions: option.DefaultRule{
+				IPCIDR:   []string{"23.227.146.124/32"},
+				Outbound: OutboundCDNTag,
 			},
 		},
 	}
@@ -381,11 +457,13 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		OverrideAndroidVPN:  true,
 		// RuleSet: []option.RuleSet{
 		// 	{
-		// 		Type: C.RuleSetTypeRemote,
-		// 		Tag:  "geoip-" + opt,
+		// 		Type:   C.RuleSetTypeRemote,
+		// 		Tag:    "CDN",
+		// 		Format: C.RuleSetFormatBinary,
 		// 		RemoteOptions: option.RemoteRuleSet{
-		// 			URL:            "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-		// 			UpdateInterval: option.Duration(5 * time.day),
+		// 			URL:            "https://raw.githubusercontent.com/umairsali07/sing-box-rules/main/iptv.srs",
+		// 			UpdateInterval: option.Duration(5 * time.Hour * 24),
+		// 			DownloadDetour: OutboundSelectTag,
 		// 		},
 		// 	},
 		// },

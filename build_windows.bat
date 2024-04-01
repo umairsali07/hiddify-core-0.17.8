@@ -14,3 +14,7 @@ copy bin\libcore.dll .
 set CGO_LDFLAGS="libcore.dll"
 go build  -o bin/BarVPNCli.exe ./cli/bydll/
 del libcore.dll
+
+
+:: Wait for a key press
+pause

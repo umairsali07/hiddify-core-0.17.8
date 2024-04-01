@@ -29,7 +29,7 @@ func RunStandalone(hiddifySettingPath string, configPath string) error {
 	go StartServiceC(false, current.Config)
 	go updateConfigInterval(current, hiddifySettingPath, configPath)
 	fmt.Printf("Press CTRL+C to stop\n")
-	fmt.Printf("Open http://localhost:6756/?secret=hiddify in your browser\n")
+	fmt.Printf("Open http://localhost:1998/?secret=hiddify in your browser\n")
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 
@@ -151,9 +151,9 @@ func buildConfig(configContent string, options config.ConfigOptions) (string, er
 	finalconfig.Log.Output = ""
 	finalconfig.Experimental.ClashAPI.ExternalUI = "webui"
 	if options.AllowConnectionFromLAN {
-		finalconfig.Experimental.ClashAPI.ExternalController = "0.0.0.0:6756"
+		finalconfig.Experimental.ClashAPI.ExternalController = "0.0.0.0:1998"
 	} else {
-		finalconfig.Experimental.ClashAPI.ExternalController = "127.0.0.1:6756"
+		finalconfig.Experimental.ClashAPI.ExternalController = "127.0.0.1:1998"
 	}
 
 	if finalconfig.Experimental.ClashAPI.Secret == "" {
