@@ -27,7 +27,6 @@ const (
 	OutboundBlockTag          = "block"
 	OutboundSelectTag         = "select"
 	OutboundURLTestTag        = "auto"
-	OutboundCDNTag            = "CDN"
 	OutboundDNSTag            = "dns-out"
 	OutboundDirectFragmentTag = "direct-fragment"
 
@@ -253,89 +252,6 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 				Outbound:  OutboundMainProxyTag,
 			},
 		},
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				DomainSuffix: []string{"cdn-port.com"},
-				Outbound:     OutboundCDNTag,
-			},
-		},
-		// {
-		// 	Type: C.RuleTypeDefault,
-		// 	DefaultOptions: option.DefaultRule{
-		// 		RuleSet:  []string{"CDN"},
-		// 		Outbound: OutboundCDNTag,
-		// 	},
-		// },
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"23.237.196.11/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"5.44.253.136/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"23.237.232.162/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"107.151.6.244/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"23.237.196.125/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"67.220.191.162/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"107.151.6.244/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"181.233.124.56/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
-		{
-			Type: C.RuleTypeDefault,
-			DefaultOptions: option.DefaultRule{
-				IPCIDR:   []string{"23.227.146.124/32"},
-				Outbound: OutboundCDNTag,
-			},
-		},
 	}
 
 	if opt.BypassLAN {
@@ -457,13 +373,11 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		OverrideAndroidVPN:  true,
 		// RuleSet: []option.RuleSet{
 		// 	{
-		// 		Type:   C.RuleSetTypeRemote,
-		// 		Tag:    "CDN",
-		// 		Format: C.RuleSetFormatBinary,
+		// 		Type: C.RuleSetTypeRemote,
+		// 		Tag:  "geoip-" + opt,
 		// 		RemoteOptions: option.RemoteRuleSet{
-		// 			URL:            "https://raw.githubusercontent.com/umairsali07/sing-box-rules/main/iptv.srs",
-		// 			UpdateInterval: option.Duration(5 * time.Hour * 24),
-		// 			DownloadDetour: OutboundSelectTag,
+		// 			URL:            "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+		// 			UpdateInterval: option.Duration(5 * time.day),
 		// 		},
 		// 	},
 		// },
@@ -524,38 +438,11 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		}
 	}
 
-	// Filter tags that contain "§CDN§"
-	filteredTags := make([]string, 0)
-	for _, tag := range tags {
-		if strings.HasPrefix(tag, "CDN-") {
-			filteredTags = append(filteredTags, tag)
-		}
-	}
-
-	// Filter out tags that contain "§CDN§"
-	unfilteredTags := make([]string, 0)
-	for _, tag := range tags {
-		if !strings.HasPrefix(tag, "CDN-") {
-			unfilteredTags = append(unfilteredTags, tag)
-		}
-	}
-
 	urlTest := option.Outbound{
 		Type: C.TypeURLTest,
 		Tag:  OutboundURLTestTag,
 		URLTestOptions: option.URLTestOutboundOptions{
-			Outbounds:   unfilteredTags,
-			URL:         opt.ConnectionTestUrl,
-			Interval:    option.Duration(opt.URLTestInterval.Duration()),
-			IdleTimeout: option.Duration(opt.URLTestIdleTimeout.Duration()),
-		},
-	}
-
-	cdn := option.Outbound{
-		Type: C.TypeURLTest,
-		Tag:  OutboundCDNTag,
-		URLTestOptions: option.URLTestOutboundOptions{
-			Outbounds:   filteredTags,
+			Outbounds:   tags,
 			URL:         opt.ConnectionTestUrl,
 			Interval:    option.Duration(opt.URLTestInterval.Duration()),
 			IdleTimeout: option.Duration(opt.URLTestIdleTimeout.Duration()),
@@ -566,12 +453,12 @@ func BuildConfig(opt ConfigOptions, input option.Options) (*option.Options, erro
 		Type: C.TypeSelector,
 		Tag:  OutboundSelectTag,
 		SelectorOptions: option.SelectorOutboundOptions{
-			Outbounds: append([]string{urlTest.Tag}, unfilteredTags...),
+			Outbounds: append([]string{urlTest.Tag}, tags...),
 			Default:   urlTest.Tag,
 		},
 	}
 
-	outbounds = append([]option.Outbound{selector, cdn, urlTest}, outbounds...)
+	outbounds = append([]option.Outbound{selector, urlTest}, outbounds...)
 
 	options.Outbounds = append(
 		outbounds,
